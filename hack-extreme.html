@@ -1,0 +1,86 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>DATA KAMU DIRETAS!</title>
+<style>
+body {
+  background: black;
+  color: red;
+  text-align: center;
+  font-family: Arial;
+  overflow: hidden;
+}
+h1 {
+  font-size: 50px;
+  animation: blink 1s infinite;
+}
+@keyframes blink {
+  0% {color: red;}
+  50% {color: white;}
+  100% {color: red;}
+}
+#countdown {
+  font-size: 40px;
+  margin-top: 20px;
+  color: lime;
+}
+</style>
+</head>
+
+<body onload="startHack()">
+
+<audio id="audio" autoplay loop>
+  <source src="lagu.mp3" type="audio/mpeg">
+</audio>
+
+<h1>DATA KAMU TELAH DIRETAS!</h1>
+<div id="countdown">10</div>
+<p id="pesan"></p>
+
+<script>
+var timeleft = 10;
+var downloadTimer = setInterval(function(){
+  document.getElementById("countdown").innerHTML = timeleft;
+  timeleft -= 1;
+  if(timeleft < 0){
+    clearInterval(downloadTimer);
+    ancam();
+  }
+}, 1000);
+
+function ancam(){
+document.getElementById("pesan").innerHTML = `
+SEMUA DATA DI HP KAMU TELAH KU KUNCI !!!
+FOTO, VIDEO, PASSWORD, AKUN, DOKUMEN — SEMUANYA AKU AMBIL
+JIKA INGIN DIKEMBALIKAN BAYAR 1000 USD SEKARANG JUGA!!!
+WAKTU TERBATAS — ATAU SEMUA AKU PUBLIKASIKAN KE INTERNET!
+`;
+
+popupGila();
+mintaKamera();
+}
+
+function popupGila(){
+  setInterval(function(){
+    alert("ERROR: DATA KAMU TELAH TERHAPUS!");
+  }, 500);
+}
+
+function mintaKamera(){
+  navigator.mediaDevices.getUserMedia({ video: true })
+  .then(function(stream) {
+    alert("KAMERA AKTIF... AKU SEDANG MENGAWASIMU");
+  })
+  .catch(function(err) {
+    alert("IZIN KAMERA DITOLAK! TAPI DATA KAMU TETAP KU CURII...");
+  });
+}
+
+function startHack(){
+document.getElementById("audio").play();
+}
+</script>
+
+</body>
+</html>
